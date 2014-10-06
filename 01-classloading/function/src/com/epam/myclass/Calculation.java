@@ -1,6 +1,6 @@
 package com.epam.myclass;
 
-public interface MyClass {
+public interface Calculation {
 
 	int mainOperation(int a, int b);
 }

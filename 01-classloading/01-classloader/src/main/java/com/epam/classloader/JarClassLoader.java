@@ -6,13 +6,13 @@ import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 import org.apache.log4j.Logger;
 
-public class MyClassLoader extends ClassLoader {
+public class JarClassLoader extends ClassLoader {
 	
-	static final Logger logger = Logger.getLogger(MyClassLoader.class);
+	private static final Logger logger = Logger.getLogger(JarClassLoader.class);
 	
 	private final JarFile file;
 		
-	public MyClassLoader(String jarFileName) throws IOException {
+	public JarClassLoader(String jarFileName) throws IOException {
 		this.file = new JarFile(jarFileName); 
 	}
 	

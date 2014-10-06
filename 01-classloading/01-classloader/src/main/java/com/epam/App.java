@@ -3,24 +3,24 @@ package com.epam;
 import java.io.IOException;
 import java.util.Scanner;
 import org.apache.log4j.Logger;
-import com.epam.classloader.MyClassLoader;
-import com.epam.myclass.MyClass;
+import com.epam.classloader.JarClassLoader;
+import com.epam.myclass.Calculation;
 
 public class App 
 {
 	static final Logger logger = Logger.getLogger(App.class);
 	
-	public static final String FILE_NAME = "function.jar";
-	public static final String USER_DIR = "user.dir";
-	public static final String CLASS_NAME = "com.epam.myclass.impl.MyClassImpl";
+	private static final String FILE_NAME = "function.jar";
+	private static final String USER_DIR = "user.dir";
+	private static final String CLASS_NAME = "com.epam.myclass.impl.CalculationImpl";
 	
-	public static final String ERROR_MESSAGE = "Please enter a correct value:";
-	public static final String LOADING_MESSAGE_RESULT = "After Class loading result: ";
-	public static final String RELOADING_MESSAGE_RESULT = "After Class reloading result: ";
+	private static final String ERROR_MESSAGE = "Please enter a correct value:";
+	private static final String LOADING_MESSAGE_RESULT = "After Class loading result: ";
+	private static final String RELOADING_MESSAGE_RESULT = "After Class reloading result: ";
 	
-	public static final String POINT1_MENU = "Push '1' for getting result (after class loading)";
-	public static final String POINT2_MENU = "Push '2' for getting result (after class reloading)";
-	public static final String POINT3_MENU = "Push '3' to exit";
+	private static final String POINT1_MENU = "Push '1' for getting result (after class loading)";
+	private static final String POINT2_MENU = "Push '2' for getting result (after class reloading)";
+	private static final String POINT3_MENU = "Push '3' to exit";
 	
 	
     public static void main( String[] args ) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException
@@ -29,15 +29,17 @@ public class App
     	
     	String workingDir = System.getProperty(USER_DIR);
     	
-    	ClassLoader classLoader = new MyClassLoader(workingDir + "/" + FILE_NAME);
+    	ClassLoader classLoader = new JarClassLoader(workingDir + "/" + FILE_NAME);
     	Class clazz = Class.forName(CLASS_NAME, true, classLoader); 
-		MyClass myClassObject = (MyClass) clazz.newInstance(); 
+		Calculation myClassObject = (Calculation) clazz.newInstance(); 
     	
-		System.out.println(POINT1_MENU);
-    	System.out.println(POINT2_MENU);
-    	System.out.println(POINT3_MENU);
+		
     	
     	for ( ; ;) {
+    		System.out.println("\n" + POINT1_MENU);
+        	System.out.println(POINT2_MENU);
+        	System.out.println(POINT3_MENU);
+        	
 	    	int choice = scanner.nextInt();
 	    	
 	        switch (choice) {
@@ -45,9 +47,9 @@ public class App
 	            	logger.info(LOADING_MESSAGE_RESULT + myClassObject.mainOperation(7, 2));
 	                break;
 	            case 2:
-	            	classLoader = new MyClassLoader(workingDir + "/" + FILE_NAME);
+	            	classLoader = new JarClassLoader(workingDir + "/" + FILE_NAME);
 	            	clazz = Class.forName(CLASS_NAME, true, classLoader); 
-					myClassObject = (MyClass) clazz.newInstance();
+					myClassObject = (Calculation) clazz.newInstance();
 					
 					logger.info(RELOADING_MESSAGE_RESULT + myClassObject.mainOperation(7, 2));
 	                break;

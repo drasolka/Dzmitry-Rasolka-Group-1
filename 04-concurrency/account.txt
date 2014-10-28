@@ -1,2 +1,0 @@
-vadim@test.tt usd 130.0
-andrei@gmail.com eur 101.4

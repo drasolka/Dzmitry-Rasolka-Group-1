@@ -26,16 +26,20 @@ public class FileWriteTask implements Runnable {
 		BufferedWriter wr = null;
 
 		String line;
-		try {
-			wr = new BufferedWriter(new FileWriter(pathFile));
-		} catch (final IOException e) {
-			logger.info(e.getMessage());
-		}
 
 		while (true) {
 			try {
+
 				line = queue.take();
+
+				try {
+					wr = new BufferedWriter(new FileWriter(pathFile, true));
+				} catch (final IOException e) {
+					logger.info(e.getMessage());
+				}
+
 				wr.write(line + "\n");
+				wr.close();
 
 			} catch (final InterruptedException e) {
 				try {
@@ -43,12 +47,12 @@ public class FileWriteTask implements Runnable {
 				} catch (final IOException e1) {
 					logger.info(e.getMessage());
 				}
-				break;
 
 			} catch (final IOException e) {
-				logger.info(e.getMessage());
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
-
 	}
+
 }

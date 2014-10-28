@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
@@ -31,14 +30,13 @@ public class FileReadTask implements Runnable {
 			br = new BufferedReader(new FileReader(pathFile));
 			String line;
 			while ((line = br.readLine()) != null) {
-				queue.offer(line, 365, TimeUnit.DAYS);
+				// queue.put(line);
+				logger.info(line);
 			}
 
 		} catch (final FileNotFoundException e) {
 			logger.info(e.getMessage());
 		} catch (final IOException e) {
-			logger.info(e.getMessage());
-		} catch (final InterruptedException e) {
 			logger.info(e.getMessage());
 		} finally {
 			try {

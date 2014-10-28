@@ -2,7 +2,6 @@ package com.epam.mentoring.concurrency.task;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
@@ -41,17 +40,18 @@ public class SaveModelTask implements Runnable {
 
 			if (name.equals(CURRENCY_MODEL)) {
 				for (final Currency cur : bank.getCurrencies()) {
-					queue.offer(cur.toString(), 365, TimeUnit.DAYS);
+					queue.put(cur.toString());
 				}
 			} else if (name.equals(BANK_MODEL)) {
-				queue.offer(bank.toString(), 365, TimeUnit.DAYS);
+				queue.put(bank.toString());
 			} else if (name.equals(ACCOUNT_MODEL)) {
 				for (final Account account : bank.getAccounts()) {
-					queue.offer(account.toString(), 365, TimeUnit.DAYS);
+					queue.put(account.toString());
 				}
 			} else if (name.equals(PERSON_MODEL)) {
 				for (final Person person : persons) {
-					queue.offer(person.toString(), 365, TimeUnit.DAYS);
+					queue.put(person.toString());
+
 				}
 			}
 

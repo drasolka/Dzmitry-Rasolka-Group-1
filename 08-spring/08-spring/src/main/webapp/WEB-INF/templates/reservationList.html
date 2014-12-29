@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>08-spring</title>
+</head>
+
+<body>
+	<div th:unless="${#lists.isEmpty(reservations)}" th:fragment="reserveList">
+		<h2>Reservations list</h2>
+		<table border="1">
+			<tr>
+				<th>Id</th>
+				<th>Film</th>
+				<th>Date</th>
+				<th>Price</th>
+				<th>Place</th>
+				<th>Customer</th>
+				<th>Action</th>
+			</tr>
+
+			<tr th:each="reservation : ${reservations}">
+				<td th:text="${reservation.id}"></td>
+				<td th:text="${reservation.filmName}"></td>
+				<td th:text="${#dates.format(reservation.date, 'dd/MM/yyyy HH:mm')}"></td>
+				<td th:text="${reservation.price}"></td>
+				<td th:text="${reservation.place}"></td>
+				<td th:text="${reservation.customer.lastName}"></td>
+				<td><a href="#" class="removeReservation"
+					th:id="${reservation.id}">Remove reservation</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

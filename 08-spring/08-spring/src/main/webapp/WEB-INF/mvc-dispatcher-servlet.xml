@@ -1,0 +1,70 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/tx  
+      	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+	<context:component-scan base-package="com.epam.mentoring" />
+
+	<tx:annotation-driven />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="myapp" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="transactionManagerName" value="java:/TransactionManager" />
+	</bean>
+
+	<bean id="personDao" class="com.epam.mentoring.spring.dao.impl.PersonDaoImpl" />
+	<bean id="personService"
+		class="com.epam.mentoring.spring.service.impl.PersonServiceImpl" />
+
+	<bean id="reservationDao" class="com.epam.mentoring.spring.dao.impl.ReservationDaoImpl" />
+	<bean id="reservationService"
+		class="com.epam.mentoring.spring.service.impl.ReservationServiceImpl" />
+
+	<bean id="sessionDao" class="com.epam.mentoring.spring.dao.impl.SessionDaoImpl" />
+	<bean id="sessionService"
+		class="com.epam.mentoring.spring.service.impl.SessionServiceImpl" />
+
+	<bean id="reserveForm" class="com.epam.mentoring.spring.dto.ReserveForm"/>
+	
+	
+	
+	<!-- <bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean> -->
+	
+	<bean id="templateResolver"
+		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+		<property name="prefix" value="/WEB-INF/templates/" />
+		<property name="suffix" value=".html" />
+		<property name="templateMode" value="HTML5" />
+	</bean>
+
+	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+	</bean>
+
+	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
+	</bean>
+
+</beans>

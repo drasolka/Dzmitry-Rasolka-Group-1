@@ -1,0 +1,77 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>08-spring</title>
+</head>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<body>
+	<h1>Mentoring (08-spring)</h1>
+
+	<div th:if="${#lists.isEmpty(sessions)}">
+		<a href="init">Initialization sample sesions</a>
+	</div> 
+	<div th:unless="${#lists.isEmpty(sessions)}">
+
+		<h2>Sessions list</h2>
+		<table border="1">
+			<tr>
+				<th>Session id</th>
+				<th>Date</th>
+				<th>Price</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="session : ${sessions}">
+				<td th:text="${session.id}"></td>
+				<td th:text="${#dates.format(session.date, 'dd/MM/yyyy HH:mm')}"></td>
+				<td th:text="${session.price}"></td>
+				<td><a href="#" th:href="@{'reserve/'+${session.id}}">Get reservation</a></td>
+			</tr>
+		</table>
+
+		<div id="reserve">
+			<div th:replace="reservationList :: reserveList"></div>
+		</div>
+
+		<div>
+			<a href="addPerson">Add new customer</a>
+			<div th:unless="${#lists.isEmpty(persons)}">
+				<h2>Customers</h2>
+				<table border="1">
+					<tr>
+						<th>Id</th>
+						<th>First name</th>
+						<th>Last name</th>
+					</tr>
+					<tr th:each="person : ${persons}">
+						<td th:text="${person.id}"></td>
+						<td th:text="${person.firstName}"></td>
+						<td th:text="${person.lastName}"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).on("click", '.removeReservation', function() {
+			var id = $(this).attr('id');
+			$.ajax({
+				url : "remove",
+				cache : false,
+				type : 'POST',
+				data : {
+					id : id
+				},
+				success : function(response) {
+					$('#reserve').html(response);
+				}
+			});
+
+		});
+	</script>
+</body>
+
+</html>

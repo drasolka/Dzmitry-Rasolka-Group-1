@@ -1,0 +1,42 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>08-spring</title>
+</head>
+
+<body>
+
+	<h1>Mentoring (08-spring)</h1>
+
+	<form action="#" th:action="@{'addReservation/'+${sessionId}}"
+		th:object="${reserveForm}" method="post">
+		<fieldset>
+			<label for="place">Place:</label> <input type="text"
+				th:field="*{place}" /> <label for="customerId">Customer id:</label>
+			<input type="text" th:field="*{customerId}" /> <input type="submit"
+				name="reserve" value="Reseve" />
+		</fieldset>
+	</form>
+
+	<div th:unless="${#lists.isEmpty(customers)}">
+		<h2>Customers</h2>
+		<table border="1">
+			<tr>
+				<th>Id</th>
+				<th>First name</th>
+				<th>Last name</th>
+			</tr>
+			<tr th:each="customer : ${customers}">
+				<td th:text="${customer.id}"></td>
+				<td th:text="${customer.firstName}"></td>
+				<td th:text="${customer.lastName}"></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+
+</html>
+

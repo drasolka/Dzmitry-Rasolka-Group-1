@@ -16,6 +16,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 	public void setCustomerDao(final CustomerDao customerDao) {
 		this.customerDao = customerDao;
+		final String msg = null;
+		msg.toString();
 	}
 
 	public Customer getById(final String id) {

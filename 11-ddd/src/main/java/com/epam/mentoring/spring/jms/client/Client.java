@@ -94,7 +94,7 @@ public class Client {
 
 			switch (choice) {
 			case 1:
-				client.sendAsync(new ReservationRequest(18, 12345, 110));
+				client.sendAsync(new ReservationRequest(18, 12345, 10));
 				client.stop();
 				System.out.println(OPTION_RESULT);
 				break;

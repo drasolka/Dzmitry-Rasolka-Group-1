@@ -1,4 +1,4 @@
-package com.epam.mentoring.spring.entity;
+package com.epam.mentoring.ddd.entity;
 
 import java.io.Serializable;
 

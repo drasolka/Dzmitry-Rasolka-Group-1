@@ -5,8 +5,8 @@
     <persistence-unit name="myapp">
         <provider>org.hibernate.ejb.HibernatePersistence</provider> 
         <jta-data-source>java:/MySqlDS</jta-data-source>
-        <class>com.epam.mentoring.spring.entity.CreditCard</class>
-        <class>com.epam.mentoring.spring.entity.Place</class>
+        <class>com.epam.mentoring.ddd.entity.CreditCard</class>
+        <class>com.epam.mentoring.ddd.entity.Place</class>
        <properties>
        		<property name="hibernate.transaction.manager_lookup_class"
                 value="org.hibernate.transaction.JBossTransactionManagerLookup" />

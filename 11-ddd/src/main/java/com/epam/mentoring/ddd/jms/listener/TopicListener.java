@@ -1,4 +1,4 @@
-package com.epam.mentoring.spring.jms.listener;
+package com.epam.mentoring.ddd.jms.listener;
 
 import java.util.Hashtable;
 
@@ -13,11 +13,11 @@ import javax.naming.NamingException;
 
 import org.apache.log4j.Logger;
 
-import com.epam.mentoring.spring.dto.ReservationRequest;
-import com.epam.mentoring.spring.entity.CreditCard;
-import com.epam.mentoring.spring.entity.Place;
-import com.epam.mentoring.spring.service.CreditCardService;
-import com.epam.mentoring.spring.service.PlaceService;
+import com.epam.mentoring.ddd.dto.ReservationRequest;
+import com.epam.mentoring.ddd.entity.CreditCard;
+import com.epam.mentoring.ddd.entity.Place;
+import com.epam.mentoring.ddd.service.CreditCardService;
+import com.epam.mentoring.ddd.service.PlaceService;
 
 @MessageDriven(activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
@@ -94,12 +94,12 @@ public class TopicListener implements MessageListener {
 	private static CreditCardService getCreditCardService()
 			throws NamingException {
 		return (CreditCardService) getContext()
-				.lookup("java:module/CreditCardServiceImpl!com.epam.mentoring.spring.service.CreditCardService");
+				.lookup("java:module/CreditCardServiceImpl!com.epam.mentoring.ddd.service.CreditCardService");
 	}
 
 	private static PlaceService getPlaceService() throws NamingException {
 		return (PlaceService) getContext()
-				.lookup("java:module/PlaceServiceImpl!com.epam.mentoring.spring.service.PlaceService");
+				.lookup("java:module/PlaceServiceImpl!com.epam.mentoring.ddd.service.PlaceService");
 	}
 
 	private void init() throws NamingException {

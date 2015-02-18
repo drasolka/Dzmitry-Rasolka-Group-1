@@ -1,11 +1,11 @@
-package com.epam.mentoring.spring.service.impl;
+package com.epam.mentoring.ddd.service.impl;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import com.epam.mentoring.spring.dao.CreditCardDao;
-import com.epam.mentoring.spring.entity.CreditCard;
-import com.epam.mentoring.spring.service.CreditCardService;
+import com.epam.mentoring.ddd.dao.CreditCardDao;
+import com.epam.mentoring.ddd.entity.CreditCard;
+import com.epam.mentoring.ddd.service.CreditCardService;
 
 @Stateless
 public class CreditCardServiceImpl implements CreditCardService {

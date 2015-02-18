@@ -1,6 +1,6 @@
-package com.epam.mentoring.spring.dao;
+package com.epam.mentoring.ddd.dao;
 
-import com.epam.mentoring.spring.entity.Place;
+import com.epam.mentoring.ddd.entity.Place;
 
 public interface PlaceDao extends GenericDao<Place, Integer> {
 

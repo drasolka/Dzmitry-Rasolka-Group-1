@@ -1,4 +1,4 @@
-package com.epam.mentoring.spring.jms.client;
+package com.epam.mentoring.ddd.jms.client;
 
 import java.util.Hashtable;
 import java.util.Scanner;
@@ -16,7 +16,7 @@ import javax.naming.NamingException;
 
 import org.apache.log4j.Logger;
 
-import com.epam.mentoring.spring.dto.ReservationRequest;
+import com.epam.mentoring.ddd.dto.ReservationRequest;
 
 public class Client {
 

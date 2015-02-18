@@ -1,11 +1,11 @@
-package com.epam.mentoring.spring.service.impl;
+package com.epam.mentoring.ddd.service.impl;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import com.epam.mentoring.spring.dao.PlaceDao;
-import com.epam.mentoring.spring.entity.Place;
-import com.epam.mentoring.spring.service.PlaceService;
+import com.epam.mentoring.ddd.dao.PlaceDao;
+import com.epam.mentoring.ddd.entity.Place;
+import com.epam.mentoring.ddd.service.PlaceService;
 
 @Stateless
 public class PlaceServiceImpl implements PlaceService {

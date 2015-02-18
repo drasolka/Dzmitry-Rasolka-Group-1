@@ -1,4 +1,4 @@
-package com.epam.mentoring.spring.dao;
+package com.epam.mentoring.ddd.dao;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.epam.mentoring.spring.dao.impl;
+package com.epam.mentoring.ddd.dao.impl;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.epam.mentoring.spring.dao.CreditCardDao;
-import com.epam.mentoring.spring.entity.CreditCard;
+import com.epam.mentoring.ddd.dao.CreditCardDao;
+import com.epam.mentoring.ddd.entity.CreditCard;
 
 @Stateless
 public class CreditCardDaoImpl implements CreditCardDao {

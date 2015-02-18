@@ -1,4 +1,4 @@
-package com.epam.mentoring.spring.dao.impl;
+package com.epam.mentoring.ddd.dao.impl;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.epam.mentoring.spring.dao.PlaceDao;
-import com.epam.mentoring.spring.entity.Place;
+import com.epam.mentoring.ddd.dao.PlaceDao;
+import com.epam.mentoring.ddd.entity.Place;
 
 @Stateless
 public class PlaceDaoImpl implements PlaceDao {

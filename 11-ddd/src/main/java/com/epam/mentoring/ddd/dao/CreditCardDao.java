@@ -1,6 +1,6 @@
-package com.epam.mentoring.spring.dao;
+package com.epam.mentoring.ddd.dao;
 
-import com.epam.mentoring.spring.entity.CreditCard;
+import com.epam.mentoring.ddd.entity.CreditCard;
 
 public interface CreditCardDao extends GenericDao<CreditCard, Integer> {
 

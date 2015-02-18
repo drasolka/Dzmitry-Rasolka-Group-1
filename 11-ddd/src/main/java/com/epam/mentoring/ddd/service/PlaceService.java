@@ -1,8 +1,8 @@
-package com.epam.mentoring.spring.service;
+package com.epam.mentoring.ddd.service;
 
 import javax.ejb.Local;
 
-import com.epam.mentoring.spring.entity.Place;
+import com.epam.mentoring.ddd.entity.Place;
 
 @Local
 public interface PlaceService {

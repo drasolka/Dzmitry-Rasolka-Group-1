@@ -1,8 +1,8 @@
-package com.epam.mentoring.spring.service;
+package com.epam.mentoring.ddd.service;
 
 import javax.ejb.Local;
 
-import com.epam.mentoring.spring.entity.CreditCard;
+import com.epam.mentoring.ddd.entity.CreditCard;
 
 @Local
 public interface CreditCardService {
